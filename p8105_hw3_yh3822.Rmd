@@ -13,4 +13,32 @@ library(p8105.datasets)
 ```
 
 
+## Problem 1
+
+```{r}
+data("ny_noaa")
+str(ny_noaa)
+summary(ny_noaa)
+```
+
+
+```{r}
+missing_data_summary = ny_noaa %>%
+  summarize(
+    missing_tmax = mean(is.na(tmax)),
+    missing_tmin = mean(is.na(tmin)),
+    missing_prcp = mean(is.na(prcp)),
+    missing_snow = mean(is.na(snow)),
+    missing_snwd = mean(is.na(snwd ))
+  )
+missing_data_summary
+```
+
+
+
+
+
+
+
+
 
