@@ -103,8 +103,22 @@ tmax_tmin_plot = ggplot(ny_noaa_clean, aes(x = tmin, y = tmax)) +
     y = "Maximum Temperature (C)"
   ) +
   theme_minimal()
-tmax_tmin_plot
 ```
 
+
+
+```{r}
+snowfall_plot_data <- ny_noaa_clean %>%
+  filter(snow > 0, snow < 100)
+snowfall_plot = ggplot(snowfall_plot_data, aes(x = snow)) +
+  geom_histogram(binwidth = 5, fill = "blue", color = "white") +
+  facet_wrap(~ year) +
+  labs(
+    title = "Distribution of Snowfall by Year",
+    x = "Snowfall (mm)",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
 
 
