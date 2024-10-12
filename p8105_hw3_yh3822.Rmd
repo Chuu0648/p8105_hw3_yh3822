@@ -94,6 +94,17 @@ ny_noaa_clean |>
 From the graph we can clearly see that the average maximum temperatures in January are basically in the range of -10 to 10 degrees Celsius, while the average maximum temperatures in July are almost in the range of 20 to 35 degrees Celsius, with a few notable outliers in both graphs.
 
 
+```{r}
+tmax_tmin_plot = ggplot(ny_noaa_clean, aes(x = tmin, y = tmax)) +
+  geom_bin_2d() + 
+  labs(
+    title = "tmax vs tmin",
+    x = "Minimum Temperature (C)",
+    y = "Maximum Temperature (C)"
+  ) +
+  theme_minimal()
+tmax_tmin_plot
+```
 
 
 
