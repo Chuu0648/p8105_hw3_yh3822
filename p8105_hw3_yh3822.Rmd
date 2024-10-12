@@ -53,4 +53,19 @@ ny_noaa_clean = ny_noaa %>%
 ```
 
 
+```{r}
+ny_noaa_clean = ny_noaa_clean %>%
+  mutate(
+    tmax = tmax / 10,    
+    tmin = tmin / 10, 
+    prcp = prcp / 10
+  )
+```
 
+
+```{r}
+ny_noaa_clean |>
+  count(snow, sort = TRUE)
+```
+
+For snowfall, 0 is the most commonly observed value, followed by NA value and 25. It's because snow does not fall for most of the year.
