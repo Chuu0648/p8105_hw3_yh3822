@@ -10,6 +10,7 @@ library(tidyverse)
 library(readxl)
 library(dplyr)
 library(p8105.datasets)
+library(gridExtra)
 ```
 
 
@@ -119,6 +120,11 @@ snowfall_plot = ggplot(snowfall_plot_data, aes(x = snow)) +
     y = "Count"
   ) +
   theme_minimal()
+```
+
+
+```{r}
+grid.arrange(tmax_tmin_plot, snowfall_plot, ncol = 2)
 ```
 
 
