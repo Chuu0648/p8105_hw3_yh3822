@@ -34,11 +34,23 @@ missing_data_summary = ny_noaa %>%
 missing_data_summary
 ```
 
-This dataset contains the weather data of New York state weather stations from January 1, 1981 through December 31, 2010, including seven variables, which are id, date, prcp, snow, snwd, tmax, and tmin. Among them, "prcp" means the precipitation (tenths of mm), "snwd" means the depth of snow (mm), "tmax" means the maximum temperature (tenths of degrees C), and "tmin" means the minimum temperature (tenths of degrees C). There are totally `r nrow(ny_noaa)` rows and `r ncol(ny_noaa)` columns. We found out that about 43.7 percent of the "tmin" and "tmax" are missing, which would seriously affect the analysis of temperatures and it's a big issue.
+This dataset contains the weather data of New York state weather stations from January 1, 1981 through December 31, 2010, including seven variables, which are id, date, prcp, snow, snwd, tmax, and tmin. Among them, "prcp" means the precipitation (tenths of mm), "snow" means the snowfall (mm), "snwd" means the depth of snow (mm), "tmax" means the maximum temperature (tenths of degrees C), and "tmin" means the minimum temperature (tenths of degrees C). There are totally `r nrow(ny_noaa)` rows and `r ncol(ny_noaa)` columns. We found out that about 43.7 percent of the "tmin" and "tmax" are missing, which would seriously affect the analysis of temperatures and it's a big issue.
 
 
 
 
+```{r}
+ny_noaa$tmin = as.numeric(ny_noaa$tmin)
+ny_noaa$tmax = as.numeric(ny_noaa$tmax)
+ny_noaa_clean = ny_noaa %>%
+  janitor::clean_names() %>%
+  filter(!is.na(tmax), !is.na(tmin)) %>%
+  mutate(
+    year = year(date),
+    month = month(date),
+    day = day(date)
+  )
+```
 
 
 
