@@ -40,6 +40,7 @@ This dataset contains the weather data of New York state weather stations from J
 
 
 ```{r}
+ny_noaa$id = as.factor(ny_noaa$id)
 ny_noaa$tmin = as.numeric(ny_noaa$tmin)
 ny_noaa$tmax = as.numeric(ny_noaa$tmax)
 ny_noaa_clean = ny_noaa %>%
@@ -63,9 +64,36 @@ ny_noaa_clean = ny_noaa_clean %>%
 ```
 
 
+
 ```{r}
 ny_noaa_clean |>
   count(snow, sort = TRUE)
 ```
 
 For snowfall, 0 is the most commonly observed value, followed by NA value and 25. It's because snow does not fall for most of the year.
+
+
+
+```{r}
+ny_noaa_clean |>
+  filter(month %in% c(1, 7)) |>
+  group_by(id, year, month) |>
+  summarize(mean_tmax = mean(tmax), na.rm = TRUE) |>
+  ggplot(aes(x = year, y = mean_tmax)) +
+  geom_point(alpha = 0.3) + 
+  geom_line() +
+  facet_grid(~ month) +
+  labs(
+    title = "Average Maximum Temperature in January and July",
+    x = "Year",
+    y = "Average Maximum Temperature (C)"
+  ) +
+  theme_minimal()
+```
+
+From the graph we can clearly see that the average maximum temperatures in January are basically in the range of -10 to 10 degrees Celsius, while the average maximum temperatures in July are almost in the range of 20 to 35 degrees Celsius, with a few notable outliers in both graphs.
+
+
+
+
+
