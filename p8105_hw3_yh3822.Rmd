@@ -128,3 +128,31 @@ grid.arrange(tmax_tmin_plot, snowfall_plot, ncol = 2)
 ```
 
 
+## Problem 2
+
+
+```{r, message=FALSE, warning=FALSE}
+nhanes_accel_df = read_csv("./data/nhanes_accel.csv") 
+nhanes_covar_df = read_csv("./data/nhanes_covar.csv", skip = 4)
+```
+
+
+
+```{r}
+nhanes_accel_clean = nhanes_accel_df %>%
+  janitor::clean_names() %>%
+  mutate(across(starts_with("min"), ~ round(., 2)))
+nhanes_covar_clean = nhanes_covar_df %>%
+  janitor::clean_names() %>%
+  mutate(sex = factor(sex, level = c(1, 2), labels = c("male", "female")),
+                      education = factor(education, 
+                                         levels = c(1, 2, 3), 
+                                         labels = c("Less than high school", "High school equivalent", "More than high school"))
+                      ) %>%
+  drop_na(seqn, sex, age, bmi, education)
+```
+
+
+
+
+
