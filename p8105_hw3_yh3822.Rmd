@@ -153,6 +153,11 @@ nhanes_covar_clean = nhanes_covar_df %>%
 ```
 
 
+```{r}
+nhanes_merged_df = nhanes_covar_clean %>%
+  left_join(nhanes_accel_clean, by = "seqn") %>%
+  filter(age >= 21)
+```
 
 
 
