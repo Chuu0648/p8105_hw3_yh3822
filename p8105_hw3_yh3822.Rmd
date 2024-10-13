@@ -239,6 +239,30 @@ nhanes_merged_df %>%
 Regardless of gender, the general trend in the distribution of activity in a day for each educational level is similar, with a downward trend at the beginning to 250 minutes, a rapid rise at that to 500 minutes, more volatile up to about 1200 minutes, and a straight line down from 1200 minutes to the end. Except for educational levels below the high school level, women have higher activity levels than men from 500 to 1200 minutes.
 
 
+## Problem 3
+
+```{r, message=FALSE, warning=FALSE}
+jan_2020_citi = read_csv("./data/citibike/Jan 2020 Citi.csv")
+jan_2024_citi = read_csv("./data/citibike/Jan 2024 Citi.csv")
+july_2020_citi = read_csv("./data/citibike/July 2020 Citi.csv")
+july_2024_citi = read_csv("./data/citibike/July 2024 Citi.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
