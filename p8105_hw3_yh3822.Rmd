@@ -196,6 +196,22 @@ As can be seen from the plot, the age distribution is less homogeneous at all le
 
 
 
+```{r}
+nhanes_merged_df %>%
+  rowwise() %>%
+  mutate(total_activity = sum(c_across(starts_with("min")), na.rm = TRUE)) %>%
+  ungroup() %>%
+  ggplot(aes(x = age, y = total_activity, color = sex)) +
+  geom_point(alpha = 0.5) +  
+  geom_smooth(method = "lm", se = FALSE, alpha = 0.3) +  
+  facet_grid(~ education) +  
+  labs(
+    title = "Total Activity vs Age by Sex and Education Level",
+    x = "Age",
+    y = "Total Activity"
+  ) +
+  theme_minimal()
+```
 
-
+We found that total activity decreased progressively with age for both males and females, and this trend was most significant for those with less than a high school education. In addition, for high school and higher than high school education, men's total activity was largely lower than women's total activity.
 
