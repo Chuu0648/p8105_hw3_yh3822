@@ -153,11 +153,36 @@ nhanes_covar_clean = nhanes_covar_df %>%
 ```
 
 
+
+
 ```{r}
 nhanes_merged_df = nhanes_covar_clean %>%
   left_join(nhanes_accel_clean, by = "seqn") %>%
   filter(age >= 21)
 ```
+
+
+
+
+```{r}
+nhanes_merged_df |>
+  group_by(education, sex) |>
+  summarise(count = n()) |>
+  pivot_wider(
+    names_from = sex,
+    values_from = count
+  )
+```
+
+27 males and 28 females are less than high school, 35 males and 23 females have the education of high school, 56 males and 59 females are more than high school.
+
+
+
+
+
+
+
+
 
 
 
