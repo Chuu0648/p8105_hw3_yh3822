@@ -318,3 +318,19 @@ There were 984 casual riders and 11436 member riders rent the bike on January 20
 
 
 
+```{r}
+july_2024_clean %>%
+  group_by(start_station_name) %>%
+  summarise(total_rides = n()) %>%
+  arrange(desc(total_rides)) %>%
+  slice_head(n = 5)
+```
+
+
+
+
+
+
+
+
+
