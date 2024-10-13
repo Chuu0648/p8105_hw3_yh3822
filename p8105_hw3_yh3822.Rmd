@@ -250,13 +250,49 @@ july_2024_citi = read_csv("./data/citibike/July 2024 Citi.csv")
 
 
 
+```{r}
+jan_2020_clean = jan_2020_citi %>%
+  janitor::clean_names() %>%
+  mutate(rideable_type = as.factor(rideable_type)) %>%
+  mutate(weekdays = as.factor(weekdays)) %>%
+  mutate(member_casual = as.factor(member_casual)) %>%
+  mutate(duration = round(duration, 2)) %>%
+  mutate(year = 2020, month = "January")
+```
 
 
 
+```{r}
+jan_2024_clean = jan_2024_citi %>%
+  janitor::clean_names() %>%
+  mutate(rideable_type = as.factor(rideable_type)) %>%
+  mutate(weekdays = as.factor(weekdays)) %>%
+  mutate(member_casual = as.factor(member_casual)) %>%
+  mutate(duration = round(duration, 2)) %>%
+  mutate(year = 2024, month = "January")
+```
 
 
+```{r}
+july_2020_clean = july_2020_citi %>%
+  janitor::clean_names() %>%
+  mutate(rideable_type = as.factor(rideable_type)) %>%
+  mutate(weekdays = as.factor(weekdays)) %>%
+  mutate(member_casual = as.factor(member_casual)) %>%
+  mutate(duration = round(duration, 2)) %>%
+  mutate(year = 2020, month = "July")
+```
 
 
+```{r}
+july_2024_clean = july_2024_citi %>%
+  janitor::clean_names() %>%
+  mutate(rideable_type = as.factor(rideable_type)) %>%
+  mutate(weekdays = as.factor(weekdays)) %>%
+  mutate(member_casual = as.factor(member_casual)) %>%
+  mutate(duration = round(duration, 2)) %>%
+  mutate(year = 2024, month = "July")
+```
 
 
 
