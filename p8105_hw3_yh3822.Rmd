@@ -215,3 +215,31 @@ nhanes_merged_df %>%
 
 We found that total activity decreased progressively with age for both males and females, and this trend was most significant for those with less than a high school education. In addition, for high school and higher than high school education, men's total activity was largely lower than women's total activity.
 
+
+
+```{r}
+nhanes_merged_df %>%
+  pivot_longer(
+    cols = starts_with("min"), 
+    names_to = "minute", 
+    values_to = "activity"
+    ) %>%
+  mutate(minute = as.numeric(gsub("min", "", minute))) %>%
+  ggplot(aes(x = minute, y = activity, color = sex)) +
+  geom_smooth(se = FALSE) +  
+  facet_wrap(~ education) +  
+  labs(
+    title = "24-hour Activity Time Courses by Education Level",
+    x = "Minute of the Day",
+    y = "Activity"
+  ) +
+  theme_minimal()
+```
+
+Regardless of gender, the general trend in the distribution of activity in a day for each educational level is similar, with a downward trend at the beginning to 250 minutes, a rapid rise at that to 500 minutes, more volatile up to about 1200 minutes, and a straight line down from 1200 minutes to the end. Except for educational levels below the high school level, women have higher activity levels than men from 500 to 1200 minutes.
+
+
+
+
+
+
