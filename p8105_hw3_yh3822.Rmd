@@ -164,7 +164,7 @@ nhanes_merged_df = nhanes_covar_clean %>%
 
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 nhanes_merged_df |>
   group_by(education, sex) |>
   summarise(count = n()) |>
@@ -178,8 +178,21 @@ nhanes_merged_df |>
 
 
 
+```{r}
+nhanes_merged_df %>%
+  ggplot(aes(x = education, y = age, fill = sex)) +
+  geom_violin(alpha = 0.7) +
+  facet_grid(~sex) +  
+  labs(
+    title = "Age Distribution by Education Level and Sex",
+    x = "Education Level",
+    y = "Age"
+    ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
 
-
+As can be seen from the plot, the age distribution is less homogeneous at all levels of education, for both men and women. For those with less than a high school education, the highest concentration of males is in the 50s and 70s, and the number of females increases with age up to the 70s. In the case of high school education, the highest concentration of males is in the 30s and 60s, and the number of females increases with age up to the 70s. For those with more than high school education, it is clear that there are more men and women in their 30s.
 
 
 
