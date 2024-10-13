@@ -328,8 +328,27 @@ july_2024_clean %>%
 
 
 
+```{r, message=FALSE, warning=FALSE}
+citibike_merged %>%
+  group_by(year, month, weekdays) %>%
+  summarise(median_duration = median(duration, na.rm = TRUE)) %>%
+  ungroup() %>%
+  ggplot(aes(x = weekdays, y = median_duration, fill = month)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_grid(~ year) +  
+  labs(
+    title = "Effects of Day of the Week, Month, and Year on Median Ride Duration",
+    x = "Day of the Week",
+    y = "Median Ride Duration (Minutes)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),  
+    legend.position = "bottom"
+  )
+```
 
-
+Weekends (Saturday and Sunday) tend to have longer median ride durations compared to weekdays, which could be because people have more leisure time on weekends. Compared to January, July tends to have longer median ride durations due to the more comfortable weather conditions. People were taking shorter rides in 2024 than in 2020.
 
 
 
