@@ -295,6 +295,7 @@ july_2024_clean = july_2024_citi %>%
 ```
 
 
+These four datasets contain contains data on rides taken on the NYC Citi Bike system for January 2020, July 2020, January 2024, July 2024. The dataset for January 2020 has `r nrow(jan_2020_clean)` rows and `r ncol(jan_2020_clean)` columns, January 2024 has `r nrow(jan_2024_clean)` rows and `r ncol(jan_2024_clean)` columns, July 2024 has `r nrow(july_2020_clean)` rows and `r ncol(july_2020_clean)` columns, July 2024 has `r nrow(july_2024_clean)` rows and `r ncol(july_2024_clean)` columns. They have the same variables, which are "ride_id", "rideable_type", "weekdays", "duration", "start_station_name", "end_station_name", "member_casual", "year", and "month".
 
 
 
