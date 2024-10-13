@@ -351,5 +351,28 @@ citibike_merged %>%
 Weekends (Saturday and Sunday) tend to have longer median ride durations compared to weekdays, which could be because people have more leisure time on weekends. Compared to January, July tends to have longer median ride durations due to the more comfortable weather conditions. People were taking shorter rides in 2024 than in 2020.
 
 
+```{r, warning=FALSE, message=FALSE}
+citibike_merged %>%
+  filter(year == 2024) %>%
+  ggplot(aes(x = duration, fill = member_casual)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.5) +
+  facet_grid(month ~ rideable_type) +  
+  labs(
+    title = "Distribution of Ride Duration in 2024 by Month, Membership Status, and Bike Type",
+    x = "Ride Duration (Minutes)",
+    y = "Count of Rides",
+    fill = "Membership Status"
+  ) +
+  scale_x_continuous(limits = c(1, 50)) +
+  scale_fill_manual(values = c("member" = "blue", "casual" = "black")) +
+  theme_minimal()
+```
+
+
+The electric bikes have shorter ride durations on average compared to classic bikes, which could be because electric bikes are more efficient. Members tend to take rides much more frequently than casual riders. The number od rides decreases as the ride duration increasing. The number of rides in July was larger than the number of rides in January, which might be caused by the weather conditions.
+
+
+
+
 
 
